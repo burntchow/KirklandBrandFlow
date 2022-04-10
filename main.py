@@ -122,7 +122,7 @@ class Player:
             self.color = select(player_matrix,self.x,self.y)
         if event.key == pygame.K_UP:
           if self.x <= 0: # Not go out of bounds
-            print("y cannot be negative")
+            pass
           else:
             self.x = self.x-1
             self.direction = "up"
@@ -136,7 +136,7 @@ class Player:
               pygame.display.update()
         elif event.key == pygame.K_DOWN:
           if self.x >= 4:
-            print("y cannot be greater than 4")
+            pass
           else:	
             self.x = self.x+1
             self.direction = "down"
@@ -150,7 +150,7 @@ class Player:
               pygame.display.update()
         elif event.key == pygame.K_RIGHT:
           if self.y >= 4:
-            print("x cannot be greater than 4")
+            pass
           else:
             self.y = self.y+1
             self.direction = "right"
@@ -163,7 +163,7 @@ class Player:
               pygame.display.update()
         elif event.key == pygame.K_LEFT:
           if self.y <= 0:
-            print("x cannot be negative")
+            pass 
           else:
             self.y = self.y-1
             self.direction = "left"
@@ -196,12 +196,9 @@ class Player:
             wrongans = pygame.Rect(150,100,200,50)
             pygame.draw.rect(WIN,(255,211,0),wrongans)
             draw_text('Wrong Ans',pygame.font.SysFont('Verdana',40),(0,0,0),WIN,150,100)
-        print(f"x: {self.y}   y: {self.x}")
-        print(player_matrix[self.x][self.y])
     self.matrix = player_matrix
 
   def remove_dot(self, x, y):
-    print("at least i print")
     if self.direction == "up":
       draw_dot(self.color,x+1,y)
     if self.direction == "down":
@@ -240,7 +237,7 @@ class Player:
         sec = (pygame.time.get_ticks() - begin) / 1000 
         if sec > 5:
           break 
-      print(sec)
+      #print(sec)
       
   def check_board(self, player_sol, solution):
     if 'x' in self.matrix:
@@ -252,8 +249,7 @@ class Player:
             pass 
           elif(solution[i][j] != player_sol[i][j]):
             #print("NAH BRUH")
-            return False 
-      print("true")
+            return False
       self.make_ad()
     return True
     
@@ -319,11 +315,7 @@ def level(user, num):
     level_select(3)
     user.trace_location(3)
 
-def esc_menu():
-  print("other stuff goes here")
-
 def KirklandBrandFlow(player):
-  print("Make Kirkland Brand Flow")
   x = True
   BACKGROUND = bg1
   WIN.blit(BACKGROUND, (0,0))
@@ -357,11 +349,9 @@ def main():
       quitbutton = pygame.Rect(150,200,200,50)
       if startbutton.collidepoint((mx,my)):
         if click:
-          print("Game Start")
           KirklandBrandFlow(user)
       if quitbutton.collidepoint((mx,my)):
         if click:
-          print("Game Exit")
           pygame.quit()
           sys.exit()
       
@@ -380,8 +370,6 @@ def main():
       if event.type == pygame.QUIT:
         run = False
         pygame.quit()
-      if event.type == pygame.KEYDOWN:
-        print("A key has been pressed")
       if event.type == pygame.MOUSEBUTTONDOWN:
         if event.button == 1:
           click = True
